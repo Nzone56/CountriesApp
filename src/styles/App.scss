@@ -1,0 +1,44 @@
+$themes : (
+    light: (
+        ModeText: hsl(200, 15%, 8%),
+        ModeElements:  hsl(0, 0%, 100%),
+        ModeBackground: hsl(0, 0%, 98%),
+        ModeInput: hsl(0, 0%, 52%),
+    ),
+    dark: (
+        ModeElements: hsl(209, 23%, 22%),
+        ModeBackground: hsl(207, 26%, 17%),
+        ModeText: hsl(0, 0%, 100%)
+    ),
+);
+
+$font-family: 'Nunito Sans', sans-serif;
+
+html{
+    font-family: $font-family;
+    margin: 0;
+    border: none; 
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+
+}
+
+.light{
+    background-color: hsl(0, 0%, 98%);
+    color: hsl(200, 15%, 8%),
+}
+.dark{
+    background-color: hsl(207, 26%, 17%);
+    color: hsl(0, 0%, 100%)
+}
+
+.navbarContent{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__title{
+
+    }
+}

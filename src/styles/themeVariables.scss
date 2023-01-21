@@ -1,0 +1,13 @@
+$themes : (
+    light: (
+        LightModeText: hsl(200, 15%, 8%),
+        LightModeElements:  hsl(0, 0%, 100%),
+        LightModeBackground: hsl(0, 0%, 98%),
+        LightModeInput: hsl(0, 0%, 52%),
+    ),
+    dark: (
+        DarkModeElements: hsl(209, 23%, 22%),
+        DarModeBackground: hsl(207, 26%, 17%),
+        DarkModeText: hsl(0, 0%, 100%),
+    ),
+);
