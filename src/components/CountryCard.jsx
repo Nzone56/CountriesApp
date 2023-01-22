@@ -1,11 +1,18 @@
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeProvider";
+import { getCountries } from "../helpers/getCountries";
 import "../styles/Card.scss"
 export const CountryCard = () => {
 
 const { theme } = useContext(ThemeContext); 
 
+const getAllCountries = async () => {
+    console.log(getCountries()); 
+} 
+
   return (
+    <>
+    { getAllCountries() }
     <div className={`card-${theme}`}>
       <div className={`card-${theme}__image`}>Acá va una imagen uwu</div>
 
@@ -18,5 +25,7 @@ const { theme } = useContext(ThemeContext);
         </div>
       </div>
     </div>
+    </>
+    
   );
 }
