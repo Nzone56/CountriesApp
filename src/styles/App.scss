@@ -1,44 +1,135 @@
-$themes : (
-    light: (
-        ModeText: hsl(200, 15%, 8%),
-        ModeElements:  hsl(0, 0%, 100%),
-        ModeBackground: hsl(0, 0%, 98%),
-        ModeInput: hsl(0, 0%, 52%),
-    ),
-    dark: (
-        ModeElements: hsl(209, 23%, 22%),
-        ModeBackground: hsl(207, 26%, 17%),
-        ModeText: hsl(0, 0%, 100%)
-    ),
-);
+$Dark-Mode-Elements: hsl(209, 23%, 22%);
+$Dark-Mode-Background: hsl(207, 26%, 17%);
+$Dark-Mode-Text: hsl(0, 0%, 100%);
+$Light-Mode-Text: hsl(200, 15%, 8%);
+$Light-Mode-Input: hsl(0, 0%, 52%);
+$Light-Mode-Background: hsl(0, 0%, 98%);
+$Light-Mode-Elements: hsl(0, 0%, 100%);
 
 $font-family: 'Nunito Sans', sans-serif;
 
-html{
+body{
     font-family: $font-family;
-    margin: 0;
-    border: none; 
-    padding: 0;
     box-sizing: border-box;
     font-size: 14px;
-
+    margin: 0; 
+    padding: 0;
+    border: 0;
 }
 
+.App-light{
+    background-color: $Light-Mode-Background;
+    color: $Light-Mode-Text
+}
+.App-dark{
+    background-color: $Dark-Mode-Background;
+    color: $Dark-Mode-Text
+}
 .light{
-    background-color: hsl(0, 0%, 98%);
-    color: hsl(200, 15%, 8%),
+    background-color: $Light-Mode-Elements;
+    color: $Light-Mode-Text
 }
 .dark{
-    background-color: hsl(207, 26%, 17%);
-    color: hsl(0, 0%, 100%)
+    background-color: $Dark-Mode-Elements;
+    color: $Dark-Mode-Text
 }
-
-.navbarContent{
+.navbar{
     display: flex;
     justify-content: space-between;
     align-items: center;
 
+   
     &__title{
+        padding: 15px 50px; 
+        font-size: 16px;
+        font-weight: 800;
+    }
+    &__darkMode{
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 50px;
+         button {
+            border: none; 
+            background-color: transparent;
+            cursor: pointer;
+            padding: 5px; 
+            font-family: $font-family;
+            font-size: 14px;
+            font-weight: 600;
+         }
+         &__light{
+            color: $Light-Mode-Text;
+         }
+         &__dark{
+            color: $Dark-Mode-Text;
+         }
 
     }
+
+}
+input{
+   width: 350px; 
+   padding: 10px; 
+   border-radius: 4px;
+   box-shadow: 3px 3px 0px 0px hsl(200, 15%, 8%);
+   border: 0;
+}
+select{
+    border: none; 
+    width: 150px;
+    border-radius: 5px;
+}
+
+.main-light{
+    height: 100vh;
+    &__search{
+        padding: 35px 50px; 
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }  
+    &__input{
+        color: $Light-Mode-Text;
+        background-color: $Light-Mode-Background;
+    }
+    ::placeholder{
+        color: $Light-Mode-Input;
+        font-family: $font-family;
+        font-size: 14px;
+    }
+    &__select{
+        color: $Light-Mode-Text;
+        background-color: $Light-Mode-Background;
+        font-family: $font-family;
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+}
+
+.main-dark{
+    height: 100vh;
+    &__search{
+        padding: 35px 50px; 
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__input{
+        background-color: $Dark-Mode-Elements;
+        color: $Dark-Mode-Text; 
+    }
+    ::placeholder{
+        color:  $Dark-Mode-Text;
+        font-family: $font-family;
+        font-size: 14px;
+    }
+    &__select{
+        background-color: $Dark-Mode-Elements;
+        color: $Dark-Mode-Text; 
+        font-family: $font-family;
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+    
 }

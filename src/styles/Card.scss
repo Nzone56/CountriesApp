@@ -1,0 +1,55 @@
+$Dark-Mode-Elements: hsl(209, 23%, 22%);
+$Dark-Mode-Background: hsl(207, 26%, 17%);
+$Dark-Mode-Text: hsl(0, 0%, 100%);
+$Light-Mode-Text: hsl(200, 15%, 8%);
+$Light-Mode-Input: hsl(0, 0%, 52%);
+$Light-Mode-Background: hsl(0, 0%, 98%);
+$Light-Mode-Elements: hsl(0, 0%, 100%);
+
+$font-family: 'Nunito Sans', sans-serif;
+
+.cardsList{
+    display: flex;
+    margin: 10px 50px; 
+}
+@mixin card{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    flex-direction: column;
+    border-radius: 5px;
+
+}
+.card-light{
+    @include card;
+    background-color: $Light-Mode-Elements;
+    &__image{
+
+    }
+    &__description{
+        @include card; 
+    }
+}
+
+.card-dark{
+    @include card;
+    background-color: red;
+     &__image{
+
+    }
+    &__text{
+        width: 100%;
+        @include card;
+        &__title{
+            width: 100%;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        &__description{
+            @include card; 
+            width: 100%;
+            background-color: blue;
+            font-size: 14px;
+        }
+    }
+}
