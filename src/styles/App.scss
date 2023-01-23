@@ -70,19 +70,20 @@ body{
 }
 input{
    width: 350px; 
-   padding: 10px; 
+   padding: 15px; 
    border-radius: 4px;
-   box-shadow: 3px 3px 0px 0px hsl(200, 15%, 8%);
+   box-shadow:  0px 0px 5px 5px hsl(207, 26%, 13%);
    border: 0;
 }
 select{
     border: none; 
-    width: 150px;
+    width: 160px;
     border-radius: 5px;
+    padding: 15px;
 }
 
 .main-light{
-    height: 100vh;
+    height: 100%;
     &__search{
         padding: 35px 50px; 
         display: flex;
@@ -104,11 +105,12 @@ select{
         font-family: $font-family;
         font-size: 14px;
         padding: 5px 10px;
+        
     }
 }
 
 .main-dark{
-    height: 100vh;
+    height: 100%;
     &__search{
         padding: 35px 50px; 
         display: flex;
@@ -129,7 +131,8 @@ select{
         color: $Dark-Mode-Text; 
         font-family: $font-family;
         font-size: 14px;
-        padding: 5px 10px;
+        padding: 10px 15px;
+        
     }
     
 }

@@ -10,46 +10,61 @@ $font-family: 'Nunito Sans', sans-serif;
 
 .cardsList{
     display: flex;
-    margin: 10px 50px; 
+    margin: 5px 35px; 
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
-@mixin card{
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; 
-    flex-direction: column;
-    border-radius: 5px;
 
-}
 .card-light{
-    @include card;
+
     background-color: $Light-Mode-Elements;
     &__image{
 
     }
     &__description{
-        @include card; 
     }
 }
 
 .card-dark{
-    @include card;
-    background-color: red;
+    margin: 0px 20px 50px 15px;
+    background-color: $Dark-Mode-Elements;
+    box-shadow:  0px 0px 10px 10px hsl(207, 26%, 13%);
+    border-radius: 5px;
      &__image{
-
+        img{
+            width: 320px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 5px 5px 0px 0px;
+        }
     }
     &__text{
-        width: 100%;
-        @include card;
+        
         &__title{
-            width: 100%;
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 800;
+            padding: 15px 15px 5px 20px; 
+            margin: 0; 
+            word-wrap:break-word;
+            display: block;
+            width: 250px;
+
         }
         &__description{
-            @include card; 
-            width: 100%;
-            background-color: blue;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
             font-size: 14px;
+            padding: 5px 20px 30px; 
+            &__item{
+                span{
+                    font-weight: 600;
+                    
+                }
+                a{
+                    font-weight: 300;
+                }
+            }
         }
     }
 }
