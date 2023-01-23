@@ -5,6 +5,7 @@ export const getCountries = async () => {
     const resp = await fetch(url); 
     const  data  = await resp.json(); 
 
+    // console.log(data)
     const countries = data.map((country) => ({
         id: country.name.common,
         name: country.name.common, 
@@ -13,6 +14,5 @@ export const getCountries = async () => {
         region: country.region,
         capital: country.capital, 
     })); 
-
     return countries
 }

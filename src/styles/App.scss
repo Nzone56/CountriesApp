@@ -7,7 +7,10 @@ $Light-Mode-Background: hsl(0, 0%, 98%);
 $Light-Mode-Elements: hsl(0, 0%, 100%);
 
 $font-family: 'Nunito Sans', sans-serif;
-
+html{
+    height: 100%;
+    width: 100%;
+}
 body{
     font-family: $font-family;
     box-sizing: border-box;
@@ -15,23 +18,27 @@ body{
     margin: 0; 
     padding: 0;
     border: 0;
+    height: 100%;
+    width: 100%;
+    
 }
 
 .App-light{
     background-color: $Light-Mode-Background;
-    color: $Light-Mode-Text
+    color: $Light-Mode-Text;
+    
 }
 .App-dark{
     background-color: $Dark-Mode-Background;
-    color: $Dark-Mode-Text
+    color: $Dark-Mode-Text;
 }
 .light{
     background-color: $Light-Mode-Elements;
-    color: $Light-Mode-Text
+    color: $Light-Mode-Text;
 }
 .dark{
     background-color: $Dark-Mode-Elements;
-    color: $Dark-Mode-Text
+    color: $Dark-Mode-Text;
 }
 .navbar{
     display: flex;
@@ -110,7 +117,9 @@ select{
 }
 
 .main-dark{
-    height: 100%;
+    height: 100vw;
+    // height: 100%;
+    background-color: $Dark-Mode-Background;
     &__search{
         padding: 35px 50px; 
         display: flex;

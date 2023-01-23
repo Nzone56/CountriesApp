@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import {  useContext } from "react";
 import { FaMoon } from "react-icons/fa";
 import { ThemeContext } from "../context/ThemeProvider";
 import '../styles/App.scss'
@@ -6,7 +6,6 @@ import '../styles/App.scss'
 export const Navbar = () => {
 
   const {toggleTheme, theme } = useContext(ThemeContext); 
-
   const handleClick = () =>{
     toggleTheme(); 
   }

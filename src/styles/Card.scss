@@ -39,7 +39,9 @@ $font-family: 'Nunito Sans', sans-serif;
         }
     }
     &__text{
-        
+        p{
+            cursor: pointer; 
+        }
         &__title{
             font-size: 16px;
             font-weight: 800;

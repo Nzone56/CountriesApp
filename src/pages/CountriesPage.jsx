@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { Navbar } from '../components/Navbar'
 import { FaSearch } from "react-icons/fa";
 import { ThemeContext } from '../context/ThemeProvider';
@@ -8,6 +8,17 @@ import { CountriesList } from '../components';
 export const CountriesPage = () => {
 
   const { theme } = useContext(ThemeContext); 
+  const [query, setQuery] = useState("")
+  const [region, setRegion] = useState("")
+
+
+  const handleInputChange = ( event ) =>{
+    setQuery(event.target.value); 
+  }
+
+  const handleSelectChange = ( event ) => {
+    setRegion(event.target.value); 
+  }
 
   return (
     <>
@@ -18,12 +29,13 @@ export const CountriesPage = () => {
             {/* <FaSearch /> */}
 
             <input
+              onChange={ handleInputChange }
               className={`main-${theme}__input`}
               type="text"
               placeholder="Search for a country..."
             />
 
-            <select name="select" className={`main-${theme}__select`}>
+            <select name="select" className={`main-${theme}__select`} onChange={ handleSelectChange} >
               <option
                 value="Filter by Region"
                 disabled
@@ -33,13 +45,13 @@ export const CountriesPage = () => {
                 Filter by Region 
               </option>
               <option value="Africa"> Africa </option>
-              <option value="America"> America </option>
+              <option value="Americas"> America </option>
               <option value="Asia"> Asia</option>
               <option value="Europe"> Europe </option>
               <option value="Oceania"> Oceania </option>
             </select>
           </div>
-          <CountriesList />
+          { <CountriesList value={ {query, region} }/> } 
         </div>
       </div>
     </>

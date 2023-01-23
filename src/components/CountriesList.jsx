@@ -1,22 +1,32 @@
 import { useEffect, useState } from "react";
 import { CountryCard } from "./CountryCard"
-import { getCountries } from "../helpers/getCountries"
-export const CountriesList = () => {
+import { getCountries, getCountriesByQuery, getCountriesByRegion } from "../helpers"
+export const CountriesList = (  { value }   ) => {
 
-  const [countries, setCountries] = useState([]);
-
+  const [countriesDB, setCountriesDB] = useState([]);
+  const [countries, setCountries] = useState(countriesDB)
   const getAllCountries = async () => {
-    setCountries(await getCountries());
+    setCountriesDB(await getCountries());
   };
+
   useEffect(() => {
     getAllCountries();
   }, []);
+
+  useEffect(() => {
+    setCountries(getCountriesByQuery( value.query, countriesDB)); 
+  }, [ value.query ])
+
+   useEffect(() => {
+     setCountries(getCountriesByRegion(value.region, countriesDB));
+   }, [value.region]);
+
 
   return (
     <div className="cardsList">
       {
         countries.map( country => {
-            return <CountryCard { ...country } />
+            return <CountryCard key={ country.name} { ...country } />
         })
       }
     </div>
