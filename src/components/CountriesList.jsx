@@ -9,20 +9,20 @@ export const CountriesList = (  { value }   ) => {
 
   const getCountriesFromContext = async () => {
     await getCountries(); 
-    setVisibleCountries(countries); 
   };
 
   useEffect(() => {
     getCountriesFromContext(); 
 
   }, []);
+
   useEffect(() => {
-    console.log("uwu")
     setVisibleCountries(countries); 
   }, [ countries ])
+
   useEffect(() => {
     setVisibleCountries(getCountriesByQuery( value.query, countries)); 
-  }, [ value.query, value.region])
+  }, [ value.query])
 
    useEffect(() => {
      setVisibleCountries(getCountriesByRegion(value.region, countries));
