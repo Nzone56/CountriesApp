@@ -29,21 +29,21 @@ export const CountriesPage = () => {
             {/* <FaSearch /> */}
 
             <input
-              onChange={ handleInputChange }
+              onChange={handleInputChange}
               className={`main-${theme}__input`}
               type="text"
               placeholder="Search for a country..."
             />
 
-            <select name="select" className={`main-${theme}__select`} onChange={ handleSelectChange} >
-              <option
-                value="Filter by Region"
-                disabled
-                selected
-                hidden
-              >
-                Filter by Region 
+            <select
+              name="select"
+              className={`main-${theme}__select`}
+              onChange={handleSelectChange}
+            >
+              <option value="Filter by Region" disabled hidden>
+                Filter by Region
               </option>
+              <option value="All"> All </option>
               <option value="Africa"> Africa </option>
               <option value="Americas"> America </option>
               <option value="Asia"> Asia</option>
@@ -51,7 +51,7 @@ export const CountriesPage = () => {
               <option value="Oceania"> Oceania </option>
             </select>
           </div>
-          { <CountriesList value={ {query, region} }/> } 
+          {<CountriesList value={{ query, region }} />}
         </div>
       </div>
     </>

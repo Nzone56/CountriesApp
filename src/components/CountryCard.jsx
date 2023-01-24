@@ -8,9 +8,9 @@ export const CountryCard = ({ id, name, img, population, region, capital  }) => 
 
   const { theme } = useContext(ThemeContext); 
   const handleOnClickCountry = () => {
-    console.log("uwu")
     navigate(`${ id }`);
   }
+  
   return (
     <>
       <div className={`card-${theme}`}>

@@ -1,13 +1,25 @@
 $Dark-Mode-Elements: hsl(209, 23%, 22%);
 $Dark-Mode-Background: hsl(207, 26%, 17%);
 $Dark-Mode-Text: hsl(0, 0%, 100%);
+
+
 $Light-Mode-Text: hsl(200, 15%, 8%);
 $Light-Mode-Input: hsl(0, 0%, 52%);
 $Light-Mode-Background: hsl(0, 0%, 98%);
 $Light-Mode-Elements: hsl(0, 0%, 100%);
 
 $font-family: 'Nunito Sans', sans-serif;
+
+
+//TODO: fix themes if else statemtes, mixin, map sass uwu 
+
+@mixin card ( $theme: '' ){
+
+    display: flex;
+    justify-content: center 
+}
 html{
+    @include card ( $theme: dark); 
     height: 100%;
     width: 100%;
 }
@@ -44,7 +56,7 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    box-shadow:  0px 5px 5px hsl(207, 26%, 13%);
    
     &__title{
         padding: 15px 50px; 
@@ -70,6 +82,11 @@ body{
          }
          &__dark{
             color: $Dark-Mode-Text;
+            display: flex;
+            align-items: center;
+            a{
+                padding: 0px 10px; 
+            }
          }
 
     }
@@ -143,5 +160,81 @@ select{
         padding: 10px 15px;
         
     }
+    &__back{
+
+        margin: 50px; 
+        width: 125px;
+        &__button{
+            background-color: $Dark-Mode-Elements;
+            padding: 10px 25px; 
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px 5px hsl(207, 26%, 13%);
+            a{
+                padding: 0px 15px; 
+            }
+        }
+    }
+    &__singleInfo{
+
+        display: flex; 
+        justify-content: flex-start;
+        height: 40%;
+        
+        &__img{
+            margin: 50px;
+            box-shadow: 0px 0px 5px 5px hsl(207, 26%, 13%);
+            width: 600px;
+            height: 375px;
+
+            img{
+                width: 100%;
+                max-height: 100%;
+            }
+        }
+        &__description{
+            padding: 25px;
+            margin: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        &__title{
+            font-weight: 800;
+        }
+        &__Info{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            &__item{
+                font-size: 15px;
+                padding: 5px 0px; 
+                
+                span{
+                    font-weight: 600;
+                }
+            }
+        }
+
+
+
+        &__borders{
+            margin: 25px 0px;
+            span{
+                font-size: 15px;
+                font-weight: 600;
+            }
+            a{
+                background-color: $Dark-Mode-Elements;
+                margin: 5px;
+                padding: 10px;
+                box-shadow: 0px 0px 5px 5px hsl(207, 26%, 13%);
+                cursor: pointer; 
+            }
+        }
+    }
+    
     
 }

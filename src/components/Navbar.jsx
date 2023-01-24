@@ -16,8 +16,9 @@ export const Navbar = () => {
         <span> Where in the world? </span>
       </div>
       <div className="navbar__darkMode">
-        <button className={`navbar__darkMode__${theme}`}onClick={handleClick}>
-          <FaMoon /> Dark Mode  
+        <button className={`navbar__darkMode__${theme}`} onClick={handleClick}>
+          <FaMoon />
+          <a> Dark Mode  </a>
         </button>
       </div>
     </div>

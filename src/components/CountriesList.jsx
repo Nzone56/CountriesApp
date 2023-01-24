@@ -3,10 +3,17 @@ import { CountryCard } from "./CountryCard"
 import { getCountries, getCountriesByQuery, getCountriesByRegion } from "../helpers"
 export const CountriesList = (  { value }   ) => {
 
+
+  //TODO: DELETE 1 STATE ( USE CONTEXT OR USE REF)
+
   const [countriesDB, setCountriesDB] = useState([]);
   const [countries, setCountries] = useState(countriesDB)
   const getAllCountries = async () => {
-    setCountriesDB(await getCountries());
+
+    //TODO: idk jdsjds
+    const countries = await getCountries();
+    setCountriesDB(countries);
+    setCountries(await getCountries());
   };
 
   useEffect(() => {

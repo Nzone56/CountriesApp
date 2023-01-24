@@ -6,7 +6,7 @@ export const AppRouter = () => {
   return (
     <Routes>
       <Route path="/countries" element={<CountriesPage />} />
-      <Route path="/countries/:id" element={<SingleCountryPage />} />
+      <Route path="/countries/:id" index element={<SingleCountryPage />} />
 
       <Route path="/" element={<Navigate to="/countries" />} />
     </Routes>
