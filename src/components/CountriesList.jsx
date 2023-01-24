@@ -1,38 +1,38 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CountryCard } from "./CountryCard"
-import { getCountries, getCountriesByQuery, getCountriesByRegion } from "../helpers"
+import { getCountriesByQuery, getCountriesByRegion } from "../helpers"
+import { CountriesContext } from "../context/CountriesProvider";
 export const CountriesList = (  { value }   ) => {
 
+  const { countries, getCountries } = useContext(CountriesContext);
+  const [ visibleCountries, setVisibleCountries] = useState( countries )
 
-  //TODO: DELETE 1 STATE ( USE CONTEXT OR USE REF)
-
-  const [countriesDB, setCountriesDB] = useState([]);
-  const [countries, setCountries] = useState(countriesDB)
-  const getAllCountries = async () => {
-
-    //TODO: idk jdsjds
-    const countries = await getCountries();
-    setCountriesDB(countries);
-    setCountries(await getCountries());
+  const getCountriesFromContext = async () => {
+    await getCountries(); 
+    setVisibleCountries(countries); 
   };
 
   useEffect(() => {
-    getAllCountries();
-  }, []);
+    getCountriesFromContext(); 
 
+  }, []);
   useEffect(() => {
-    setCountries(getCountriesByQuery( value.query, countriesDB)); 
-  }, [ value.query ])
+    console.log("uwu")
+    setVisibleCountries(countries); 
+  }, [ countries ])
+  useEffect(() => {
+    setVisibleCountries(getCountriesByQuery( value.query, countries)); 
+  }, [ value.query, value.region])
 
    useEffect(() => {
-     setCountries(getCountriesByRegion(value.region, countriesDB));
+     setVisibleCountries(getCountriesByRegion(value.region, countries));
    }, [value.region]);
 
 
   return (
     <div className="cardsList">
       {
-        countries.map( country => {
+        visibleCountries.map( country => {
             return <CountryCard key={ country.name} { ...country } />
         })
       }

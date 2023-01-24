@@ -45,7 +45,7 @@ export const SingleCountryPage = (  ) => {
   //  }, [borderCountries]);
 
   const getCountry = async () => {
-    // setCountry(await getCountryById(id));
+    setCountry(await getCountryById(id));
   };
 
   const onNavigateBack = () => {

@@ -1,11 +1,17 @@
 import { useContext, useRef, useState } from 'react';
 import { Navbar } from '../components/Navbar'
-import { FaSearch } from "react-icons/fa";
 import { ThemeContext } from '../context/ThemeProvider';
 import '../styles/App.scss'
 import { CountriesList } from '../components';
+import { CountriesContext } from '../context/CountriesProvider';
 
 export const CountriesPage = () => {
+
+
+  //TODO: input component 
+  // 1. update countries from parent 
+  // 2. send function to child ( input ) with his own state with the input value or reference from child 
+  // 3. same with regions 
 
   const { theme } = useContext(ThemeContext); 
   const [query, setQuery] = useState("")

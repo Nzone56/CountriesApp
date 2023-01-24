@@ -1,11 +1,11 @@
 
 
-export const getCountries = async () => {
+export const getAllCountries = async () => {
     const url = `https://restcountries.com/v3.1/all`;
     const resp = await fetch(url); 
     const  data  = await resp.json(); 
 
-    console.log(data)
+    // console.log(data)
     const countries = data.map((country) => ({
         id: country.name.common,
         name: country.name.common, 
