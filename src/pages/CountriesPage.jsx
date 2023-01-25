@@ -1,12 +1,10 @@
-import { useContext, useRef, useState } from 'react';
+import { useContext, useState } from 'react';
 import { Navbar } from '../components/Navbar'
 import { ThemeContext } from '../context/ThemeProvider';
 import '../styles/App.scss'
 import { CountriesList } from '../components';
-import { CountriesContext } from '../context/CountriesProvider';
 
 export const CountriesPage = () => {
-
 
   //TODO: input component 
   // 1. update countries from parent 

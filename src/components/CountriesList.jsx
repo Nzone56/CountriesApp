@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { CountryCard } from "./CountryCard"
-import { getCountriesByQuery, getCountriesByRegion } from "../helpers"
+import { getCountriesByQuery} from "../helpers"
 import { CountriesContext } from "../context/CountriesProvider";
 export const CountriesList = (  { value }   ) => {
 
@@ -13,7 +13,6 @@ export const CountriesList = (  { value }   ) => {
 
   useEffect(() => {
     getCountriesFromContext(); 
-
   }, []);
 
   useEffect(() => {
@@ -23,11 +22,6 @@ export const CountriesList = (  { value }   ) => {
   useEffect(() => {
     setVisibleCountries(getCountriesByQuery( value.query, value.region, countries,)); 
   }, [ value.query, value.region])
-
-  //  useEffect(() => {
-  //    setVisibleCountries(getCountriesByRegion(value.region, countries));
-  //  }, [value.region]);
-
 
   return (
     <div className="cardsList">

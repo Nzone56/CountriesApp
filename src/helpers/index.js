@@ -1,5 +1,4 @@
 export * from "./getAllCountries"
-export * from "./getCountriesByRegion"
 export * from "./getCountriesByQuery"
 export * from "./getCountryById"
 export * from "./getCountryByCode"
