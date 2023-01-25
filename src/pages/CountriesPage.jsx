@@ -15,7 +15,7 @@ export const CountriesPage = () => {
 
   const { theme } = useContext(ThemeContext); 
   const [query, setQuery] = useState("")
-  const [region, setRegion] = useState("")
+  const [region, setRegion] = useState("All")
 
 
   const handleInputChange = ( event ) =>{
@@ -46,9 +46,6 @@ export const CountriesPage = () => {
               className={`main-${theme}__select`}
               onChange={handleSelectChange}
             >
-              <option value="Filter by Region" disabled hidden>
-                Filter by Region
-              </option>
               <option value="All"> All </option>
               <option value="Africa"> Africa </option>
               <option value="Americas"> America </option>

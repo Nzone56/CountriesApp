@@ -21,12 +21,12 @@ export const CountriesList = (  { value }   ) => {
   }, [ countries ])
 
   useEffect(() => {
-    setVisibleCountries(getCountriesByQuery( value.query, countries)); 
-  }, [ value.query])
+    setVisibleCountries(getCountriesByQuery( value.query, value.region, countries,)); 
+  }, [ value.query, value.region])
 
-   useEffect(() => {
-     setVisibleCountries(getCountriesByRegion(value.region, countries));
-   }, [value.region]);
+  //  useEffect(() => {
+  //    setVisibleCountries(getCountriesByRegion(value.region, countries));
+  //  }, [value.region]);
 
 
   return (
