@@ -3,7 +3,5 @@ export const getCountryByCode = async ( code ) => {
   const resp = await fetch(url);
   const countryArr = await resp.json();
   
-
-  // TODO: Generalize the function 
-  return countryArr[0].name.common;
+  return countryArr[0];
 };

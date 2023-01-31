@@ -13,6 +13,7 @@ export const getAllCountries = async () => {
         population: country.population,
         region: country.region,
         capital: country.capital, 
+        
     })); 
     return countries
 }

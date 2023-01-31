@@ -10,7 +10,7 @@ export const CountriesList = (  { value }   ) => {
   const getCountriesFromContext = async () => {
     await getCountries(); 
   };
-
+  console.log(visibleCountries); 
   useEffect(() => {
     getCountriesFromContext(); 
   }, []);
@@ -20,7 +20,7 @@ export const CountriesList = (  { value }   ) => {
   }, [ countries ])
 
   useEffect(() => {
-    setVisibleCountries(getCountriesByQuery( value.query, value.region, countries,)); 
+    setVisibleCountries(getCountriesByQuery( value.query, value.region, countries)); 
   }, [ value.query, value.region])
 
   return (

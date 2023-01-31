@@ -3,6 +3,8 @@ import { Navbar } from '../components/Navbar'
 import { ThemeContext } from '../context/ThemeProvider';
 import '../styles/App.scss'
 import { CountriesList } from '../components';
+import { FaSearch } from 'react-icons/fa';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const CountriesPage = () => {
 
@@ -30,15 +32,14 @@ export const CountriesPage = () => {
         <Navbar />
         <div className={`main-${theme}`}>
           <div className={`main-${theme}__search`}>
-            {/* <FaSearch /> */}
-
             <input
               onChange={handleInputChange}
               className={`main-${theme}__input`}
               type="text"
               placeholder="Search for a country..."
+              style={{ textIndent: 1.6 + "rem" }}
             />
-
+            <FontAwesomeIcon icon={{FaSearch}} />
             <select
               name="select"
               className={`main-${theme}__select`}

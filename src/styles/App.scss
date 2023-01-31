@@ -10,7 +10,7 @@ $Light-Mode-Elements: hsl(0, 0%, 100%);
 
 $font-family: 'Nunito Sans', sans-serif;
 
-
+$Dark-Box-Shadow: hsl(207, 26%, 17%) 0rem 0rem 0.5rem 0.3rem;
 //TODO: fix themes if else statemtes, mixin, map sass uwu 
 
 @mixin card ( $theme: '' ){
@@ -22,11 +22,12 @@ html{
     @include card ( $theme: dark); 
     height: 100%;
     width: 100%;
+    font-size: 62.5%;
 }
 body{
     font-family: $font-family;
     box-sizing: border-box;
-    font-size: 14px;
+    font-size: 1.4rem;
     margin: 0; 
     padding: 0;
     border: 0;
@@ -56,11 +57,12 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow:  0px 5px 5px hsl(207, 26%, 13%);
+    box-shadow: $Dark-Box-Shadow; 
    
     &__title{
-        padding: 15px 50px; 
-        font-size: 16px;
+        padding: 2.4rem 5rem 3.2rem 8rem; 
+        font-size: 2rem;
+        line-height: 2.4rem;
         font-weight: 800;
     }
     &__darkMode{
@@ -68,14 +70,16 @@ body{
         justify-content: center;
         align-items: center;
         padding: 15px 50px;
+
          button {
             border: none; 
             background-color: transparent;
             cursor: pointer;
             padding: 5px; 
             font-family: $font-family;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 600;
+            line-height: 1.6rem;
          }
          &__light{
             color: $Light-Mode-Text;
@@ -93,11 +97,11 @@ body{
 
 }
 input{
-   width: 350px; 
    padding: 15px; 
    border-radius: 4px;
-   box-shadow:  0px 0px 5px 5px hsl(207, 26%, 13%);
+   box-shadow: $Dark-Box-Shadow;
    border: 0;
+   line-height: 2.4rem;
 }
 select{
     border: none; 
@@ -106,39 +110,12 @@ select{
     padding: 15px;
 }
 
-.main-light{
-    height: 100%;
-    &__search{
-        padding: 35px 50px; 
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }  
-    &__input{
-        color: $Light-Mode-Text;
-        background-color: $Light-Mode-Background;
-    }
-    ::placeholder{
-        color: $Light-Mode-Input;
-        font-family: $font-family;
-        font-size: 14px;
-    }
-    &__select{
-        color: $Light-Mode-Text;
-        background-color: $Light-Mode-Background;
-        font-family: $font-family;
-        font-size: 14px;
-        padding: 5px 10px;
-        
-    }
-}
-
 .main-dark{
     height: 100vw;
     // height: 100%;
     background-color: $Dark-Mode-Background;
     &__search{
-        padding: 35px 50px; 
+        padding: 3.5rem 8rem; 
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -146,6 +123,14 @@ select{
     &__input{
         background-color: $Dark-Mode-Elements;
         color: $Dark-Mode-Text; 
+        background-image: url("../assets/icons/search-solid.svg");
+        background-repeat: no-repeat;
+        background-position: 3.2rem 1.6rem;
+        background-size: 5%;
+        font-size: 1.2rem;
+        padding: 1.6rem 2.7rem 1.6rem 7.3rem;
+        width: 380px; 
+        
     }
     ::placeholder{
         color:  $Dark-Mode-Text;

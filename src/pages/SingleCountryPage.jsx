@@ -1,22 +1,23 @@
-import { useContext, useEffect, useMemo, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { FaArrowLeft } from "react-icons/fa";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Navbar } from "../components"
 import { ThemeContext } from "../context/ThemeProvider"
-import { getCountryByCode, getCountryById } from "../helpers";
-import { getCountriesNames } from "../helpers/getCountriesNames";
+import { getCountryById } from "../helpers";
 import "../styles/App.scss";
 
 export const SingleCountryPage = (  ) => {
-
+  
   //TODO: Loading;  RESEARCH : skeletons :D uwu
+  //TODO: Countries without border countries, example: Marshall Islands  ( Review )
+  //TODO: Back button its getting waaay to back and not in the exact previus page
+  //TODO: Ireland shortcut via border country its not working ( Bug from API )
+
   const { theme } = useContext(ThemeContext);
   const { id } = useParams();
   const [country, setCountry] = useState("");
   const navigate = useNavigate();
-  const location = useLocation(); 
-
-
+  const location = useLocation();
   const {
     img,
     name,
@@ -30,47 +31,29 @@ export const SingleCountryPage = (  ) => {
     languages,
     borderCountries,
   } = country;
-
-  // const [countriesB, setCountriesB] = useState(borderCountries)
-
-  // const getBorderCountries = async () => {
-  //   if( borderCountries)
-  //   {
-  //     setCountriesB( await getCountriesNames( Object.values(borderCountries).map((country) => country)));
-  //   }
-  // }
-
-  //  useEffect(() => {
-  //    getBorderCountries();
-  //  }, [borderCountries]);
-
+  //Get country data
   const getCountry = async () => {
-    setCountry(await getCountryById(id));
+    const countryById = await getCountryById(id);
+    setCountry(countryById);
   };
-
+  //Button of Navigate Back :D 
   const onNavigateBack = () => {
-    console.log("uwu")
     navigate(-1);
   };
-
-  const onClickBorder = async( code ) => {
-    const name = await getBorderName( code ); 
-    console.log(location); 
-    navigate(`/countries/${ name }`, { replace: true});
+  //Change country page
+  const onClickBorderCountry = async ( name ) => {
+    if( name !== "None")
+    {navigate(`/countries/${name}`, { replace: true });}
   };
- 
-  const getBorderName = async ( code ) => {
-    return await getCountryByCode( code )
-  }
+  //Get country data
   useEffect(() => {
     getCountry();
   }, []);
 
+  //Change country page
   useEffect(() => {
-    //TODO: Update the state 
-    console.log("agzel");
+    getCountry();
   }, [location.pathname]);
-  
   return (
     <>
       <div className={`App-${theme}`}>
@@ -96,7 +79,7 @@ export const SingleCountryPage = (  ) => {
                   <span> Native Name: </span>
                   {nativeName ? (
                     Object.values(nativeName).map((language) => {
-                      return <a key={language.official}> {language.common}</a>;
+                      return <a key={language.common}> {language.common}</a>;
                     })
                   ) : (
                     <a> Loading </a>
@@ -121,7 +104,7 @@ export const SingleCountryPage = (  ) => {
                   <span> Currencies: </span>{" "}
                   {currencies ? (
                     Object.values(currencies).map((curr) => {
-                      return <a key={curr.symbol}> {curr.name}</a>;
+                      return <a key={curr.name}> {curr.name}</a>;
                     })
                   ) : (
                     <a> Loading uwu </a>
@@ -143,7 +126,10 @@ export const SingleCountryPage = (  ) => {
                   {borderCountries ? (
                     Object.values(borderCountries).map((country) => {
                       return (
-                        <a key={country} onClick={ () => onClickBorder( country ) }>
+                        <a
+                          key={country}
+                          onClick={() => onClickBorderCountry(country)}
+                        >
                           {country}
                         </a>
                       );
