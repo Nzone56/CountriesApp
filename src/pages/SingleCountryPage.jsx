@@ -55,7 +55,6 @@ export const SingleCountryPage = (  ) => {
     getCountry();
   }, [location.pathname]);
   return (
-    <>
       <div className={`App-${theme}`}>
         <Navbar />
         <div className={`main-${theme}`}>
@@ -75,74 +74,77 @@ export const SingleCountryPage = (  ) => {
             <div className={`main-${theme}__singleInfo__description`}>
               <h1 className={`main-${theme}__singleInfo__title`}> {name} </h1>
               <div className={`main-${theme}__singleInfo__Info`}>
-                <div className={`main-${theme}__singleInfo__Info__item`}>
-                  <span> Native Name: </span>
-                  {nativeName ? (
-                    Object.values(nativeName).map((language) => {
-                      return <a key={language.common}> {language.common}</a>;
-                    })
-                  ) : (
-                    <a> Loading </a>
-                  )}
+                <div className={"Column1"}>
+                  <div className={`main-${theme}__singleInfo__Info__item`}>
+                    <span> Native Name: </span>
+                    {nativeName ? (
+                      Object.values(nativeName).map((language) => {
+                        return <a key={language.common}> {language.common}</a>;
+                      })
+                    ) : (
+                      <a> Loading </a>
+                    )}
+                  </div>
+                  <div className={`main-${theme}__singleInfo__Info__item`}>
+                    <span> Population: </span>{" "}
+                    <a> {population?.toLocaleString("en-US")}</a>
+                  </div>
+                  <div className={`main-${theme}__singleInfo__Info__item`}>
+                    <span> Region: </span> <a> {region}</a>
+                  </div>
+                  <div className={`main-${theme}__singleInfo__Info__item`}>
+                    <span> Sub Region: </span> <a> {subRegion}</a>
+                  </div>
+                  <div className={`main-${theme}__singleInfo__Info__item`}>
+                    <span> Capital: </span> <a> {capital}</a>
+                  </div>
                 </div>
-                <div className={`main-${theme}__singleInfo__Info__item`}>
-                  <span> Population: </span> <a> {population}</a>
+                <div className={"Column2"}>
+                  <div className={`main-${theme}__singleInfo__Info__item`}>
+                    <span> Top Level Domain: </span> <a> {topLevelDomain}</a>
+                  </div>
+                  <div className={`main-${theme}__singleInfo__Info__item`}>
+                    <span> Currencies: </span>{" "}
+                    {currencies ? (
+                      Object.values(currencies).map((curr) => {
+                        return <a key={curr.name}> {curr.name}</a>;
+                      })
+                    ) : (
+                      <a> Loading uwu </a>
+                    )}
+                  </div>
+                  <div className={`main-${theme}__singleInfo__Info__item`}>
+                    <span> Languages: </span>
+                    {languages ? (
+                      Object.values(languages).map((language) => {
+                        return <a key={language}> {language}, </a>;
+                      })
+                    ) : (
+                      <a> Loading uwu </a>
+                    )}
+                  </div>
                 </div>
-                <div className={`main-${theme}__singleInfo__Info__item`}>
-                  <span> Region: </span> <a> {region}</a>
-                </div>
-                <div className={`main-${theme}__singleInfo__Info__item`}>
-                  <span> Sub Region: </span> <a> {subRegion}</a>
-                </div>
-                <div className={`main-${theme}__singleInfo__Info__item`}>
-                  <span> Capital: </span> <a> {capital}</a>
-                </div>
-                <div className={`main-${theme}__singleInfo__Info__item`}>
-                  <span> Top Level Domain: </span> <a> {topLevelDomain}</a>
-                </div>
-                <div className={`main-${theme}__singleInfo__Info__item`}>
-                  <span> Currencies: </span>{" "}
-                  {currencies ? (
-                    Object.values(currencies).map((curr) => {
-                      return <a key={curr.name}> {curr.name}</a>;
-                    })
-                  ) : (
-                    <a> Loading uwu </a>
-                  )}
-                </div>
-                <div className={`main-${theme}__singleInfo__Info__item`}>
-                  <span> Languages: </span>
-                  {languages ? (
-                    Object.values(languages).map((language) => {
-                      return <a key={language}> {language}, </a>;
-                    })
-                  ) : (
-                    <a> Loading uwu </a>
-                  )}
-                </div>
-
-                <div className={`main-${theme}__singleInfo__borders`}>
-                  <span> Border Countries: </span>
-                  {borderCountries ? (
-                    Object.values(borderCountries).map((country) => {
-                      return (
-                        <a
-                          key={country}
-                          onClick={() => onClickBorderCountry(country)}
-                        >
-                          {country}
-                        </a>
-                      );
-                    })
-                  ) : (
-                    <a> Loading </a>
-                  )}
-                </div>
+              </div>
+              <div className={`main-${theme}__singleInfo__borders`}>
+                <span> Border Countries: </span>
+                {borderCountries ? (
+                  Object.values(borderCountries).map((country) => {
+                    return (
+                      <a
+                        key={country}
+                        onClick={() => onClickBorderCountry(country)}
+                      >
+                        {country}
+                      </a>
+                    );
+                  })
+                ) : (
+                  <a> Loading </a>
+                )}
               </div>
             </div>
           </div>
         </div>
       </div>
-    </>
   );
 }

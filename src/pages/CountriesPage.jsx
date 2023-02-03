@@ -26,8 +26,9 @@ export const CountriesPage = () => {
     setRegion(event.target.value); 
   }
 
+
+
   return (
-    <>
       <div className={`App-${theme}`}>
         <Navbar />
         <div className={`main-${theme}`}>
@@ -56,6 +57,5 @@ export const CountriesPage = () => {
           {<CountriesList value={{ query, region }} />}
         </div>
       </div>
-    </>
   );
 }

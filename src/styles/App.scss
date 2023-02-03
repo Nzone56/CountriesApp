@@ -10,17 +10,184 @@ $Light-Mode-Elements: hsl(0, 0%, 100%);
 
 $font-family: 'Nunito Sans', sans-serif;
 
-$Dark-Box-Shadow: hsl(207, 26%, 17%) 0rem 0rem 0.5rem 0.3rem;
+$Dark-Box-Shadow: hsl(207, 26%, 13%) 0rem 0rem 1rem 1rem;
+
+$Light-Box-Shadow: rgba(235, 235, 235, 100%) 0rem 0rem 1rem 1rem;
 //TODO: fix themes if else statemtes, mixin, map sass uwu 
 
-@mixin card ( $theme: '' ){
+@mixin countryCard ($darkmode){
+    @if $darkmode {
+        background-color: $Dark-Mode-Elements;
+        box-shadow:  $Dark-Box-Shadow;
+    } @else {
+        background-color: $Light-Mode-Elements;
+        box-shadow:  $Light-Box-Shadow;
+    }
+    margin: 0 0 7.5rem 0;
+    border-radius: 5px;
+    width: 26.6rem;
+    height: 34rem;
+    &__image{
+        width: 26.6rem;
+        height: 16rem;
+        img{
+            width: 26.6rem;
+            height: 16rem;
+            object-fit: cover;
+            border-radius: 5px 5px 0px 0px;
+        }
+    }
+    &__text{
+        p{
+            cursor: pointer; 
+        }
+        &__title{
+            font-size: 1.6rem;
+            line-height: 2.4rem;
+            font-weight: 800;
+            padding: 2.4rem 2rem 1.6rem 2rem; 
+            margin: 0; 
+            word-wrap:break-word;
+            display: block;
+            width: 230px;
 
-    display: flex;
-    justify-content: center 
+        }
+        &__description{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            font-size: 1.4rem;
+            padding: 0 2rem 3rem; 
+            &__item{
+                margin-bottom: 0.8rem; 
+                span{
+                    font-weight: 600;
+                    
+                    
+                }
+                a{
+                    font-weight: 300;
+                }
+            }
+        }
+    }
 }
+@mixin navbarButton ($darkmode){
+    @if $darkmode {
+        color: $Dark-Mode-Text;
+    } @else {
+        color: $Light-Mode-Text;
+    }
+    display: flex;
+    align-items: center;
+    padding: 0; 
+    a{
+        padding: 0 0 0 0.8rem; 
+     }
+}
+
+@mixin searchInputAndSelect($darkmode){
+    input{
+        @if $darkmode {
+            box-shadow: $Dark-Box-Shadow;
+        } @else {
+            box-shadow: $Light-Box-Shadow;
+        }
+        padding: 15px; 
+        border-radius: 4px;
+        border: 0;
+        line-height: 2.4rem;
+    }
+    &__search{
+        padding: 3.5rem 8rem 4.8rem 8rem; 
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__input{
+        @if $darkmode {
+            background-color: $Dark-Mode-Elements;
+            color: $Dark-Mode-Text; 
+        } @else {
+            background-color: $Light-Mode-Elements;
+            color: $Light-Mode-Text; 
+        }
+        font-size: 1.2rem;
+        padding: 1.6rem 2.7rem 1.6rem 7.3rem;
+        width: 380px; 
+    }
+    ::placeholder{
+         @if $darkmode {
+            color: $Dark-Mode-Text; 
+        } @else {
+            color: $Light-Mode-Input; 
+        }
+        font-family: $font-family;
+        font-size: 14px;
+    }
+    &__select{
+        @if $darkmode {
+            background-color: $Dark-Mode-Elements;
+            color: $Dark-Mode-Text; 
+            box-shadow: $Dark-Box-Shadow;
+        } @else {
+            background-color: $Light-Mode-Elements;
+            color: $Light-Mode-Text; 
+            box-shadow: $Light-Box-Shadow;
+        }
+        font-family: $font-family;
+        font-size: 14px;
+        padding: 1rem 1.5rem;
+        width: 20rem;
+    }
+    
+}
+@mixin backButton ($darkmode){
+    @if $darkmode {
+        background-color: $Dark-Mode-Elements;
+        box-shadow: $Dark-Box-Shadow;
+    } @else {
+        background-color: $Light-Mode-Elements;
+        box-shadow: $Light-Box-Shadow;
+    }
+    padding: 0.8rem 3.2rem; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    line-height: 2.4rem;
+    a{
+        padding: 0 1rem; 
+    }
+}
+@mixin borderCountries($darkmode){
+    margin: 25px 0px;         
+    span{
+        font-size: 15px;
+        font-weight: 600;
+    }
+    a{  
+        @if $darkmode {
+        background-color: $Dark-Mode-Elements;
+        box-shadow: $Dark-Box-Shadow;
+        } @else {
+        background-color: $Light-Mode-Elements;
+        box-shadow: $Light-Box-Shadow;
+        }
+        display: inline-block; 
+        text-align: center;
+        justify-content: center;
+        padding: 1rem 0; 
+        margin: 0.5rem;
+        line-height: 1rem;
+        width: 10rem;
+        border-radius: 3px;
+        cursor: pointer; 
+    }
+}
+
 html{
-    @include card ( $theme: dark); 
-    height: 100%;
+    min-height: 100%;
     width: 100%;
     font-size: 62.5%;
 }
@@ -45,20 +212,25 @@ body{
     background-color: $Dark-Mode-Background;
     color: $Dark-Mode-Text;
 }
+
+//  TO NAVBAR 
 .light{
     background-color: $Light-Mode-Elements;
     color: $Light-Mode-Text;
+    box-shadow: $Light-Box-Shadow;
 }
 .dark{
     background-color: $Dark-Mode-Elements;
     color: $Dark-Mode-Text;
+    box-shadow: $Dark-Box-Shadow;
+    
 }
+// NAVBAR
 .navbar{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: $Dark-Box-Shadow; 
-   
+
     &__title{
         padding: 2.4rem 5rem 3.2rem 8rem; 
         font-size: 2rem;
@@ -69,157 +241,164 @@ body{
         display: inline-flex;
         justify-content: center;
         align-items: center;
-        padding: 15px 50px;
-
+        margin: 1.5rem 8rem;
+    
          button {
             border: none; 
             background-color: transparent;
             cursor: pointer;
-            padding: 5px; 
             font-family: $font-family;
             font-size: 16px;
             font-weight: 600;
             line-height: 1.6rem;
+            width: 11.2rem;
          }
          &__light{
-            color: $Light-Mode-Text;
+            @include navbarButton(false)
          }
          &__dark{
-            color: $Dark-Mode-Text;
-            display: flex;
-            align-items: center;
-            a{
-                padding: 0px 10px; 
-            }
+            @include navbarButton(true)
          }
-
     }
+}
 
+.cardsList{
+    display: flex;
+    margin: 0 8rem; 
+    justify-content: space-between;
+    flex-wrap: wrap;
+    min-height: calc(100vh - 219px);
 }
-input{
-   padding: 15px; 
-   border-radius: 4px;
-   box-shadow: $Dark-Box-Shadow;
-   border: 0;
-   line-height: 2.4rem;
+
+.card-light{
+    @include countryCard(false); 
 }
+
+.card-dark{
+    @include countryCard(true); 
+}
+
+
+
 select{
     border: none; 
-    width: 160px;
+    width: 16rem;
     border-radius: 5px;
-    padding: 15px;
+    padding: 1.5rem;
+    height: 5.6rem;
 }
 
 .main-dark{
-    height: 100vw;
-    // height: 100%;
+    @include searchInputAndSelect(true);
     background-color: $Dark-Mode-Background;
-    &__search{
-        padding: 3.5rem 8rem; 
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    &__input{
-        background-color: $Dark-Mode-Elements;
-        color: $Dark-Mode-Text; 
-        background-image: url("../assets/icons/search-solid.svg");
-        background-repeat: no-repeat;
-        background-position: 3.2rem 1.6rem;
-        background-size: 5%;
-        font-size: 1.2rem;
-        padding: 1.6rem 2.7rem 1.6rem 7.3rem;
-        width: 380px; 
-        
-    }
-    ::placeholder{
-        color:  $Dark-Mode-Text;
-        font-family: $font-family;
-        font-size: 14px;
-    }
-    &__select{
-        background-color: $Dark-Mode-Elements;
-        color: $Dark-Mode-Text; 
-        font-family: $font-family;
-        font-size: 14px;
-        padding: 10px 15px;
-        
-    }
+    
     &__back{
-
-        margin: 50px; 
-        width: 125px;
+        margin: 8rem; 
+        width: 13.6rem;
         &__button{
-            background-color: $Dark-Mode-Elements;
-            padding: 10px 25px; 
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            border-radius: 5px;
-            box-shadow: 0px 0px 5px 5px hsl(207, 26%, 13%);
-            a{
-                padding: 0px 15px; 
-            }
+            @include backButton(true)
         }
     }
     &__singleInfo{
-
         display: flex; 
-        justify-content: flex-start;
-        height: 40%;
+        min-height: calc(100vh - 280px);
         
         &__img{
-            margin: 50px;
-            box-shadow: 0px 0px 5px 5px hsl(207, 26%, 13%);
-            width: 600px;
-            height: 375px;
+            margin: 0 0 0 8rem;
+            width: 56rem;
+            height: 40rem;
 
             img{
-                width: 100%;
-                max-height: 100%;
+                width: 56rem;
+                height: 40rem;
             }
         }
         &__description{
-            padding: 25px;
-            margin: 50px;
+            margin: 5rem 8rem 0 14.6rem;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
         }
         &__title{
             font-weight: 800;
+            font-size: 2.4rem;
+            margin: 0 0 4rem 0;
         }
+        &__borders{
+            @include borderCountries ( true )
+        }
+
         &__Info{
             display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
+            flex-direction: row;
+            .Column2{
+                margin-left: 11rem;
+            }
             &__item{
-                font-size: 15px;
-                padding: 5px 0px; 
-                
+                font-size: 1.4rem;
+                line-height: 1.6rem;
+                margin: 0 0 1.6rem 0; 
                 span{
                     font-weight: 600;
                 }
             }
-        }
-
-
-
-        &__borders{
-            margin: 25px 0px;
-            span{
-                font-size: 15px;
-                font-weight: 600;
-            }
-            a{
-                background-color: $Dark-Mode-Elements;
-                margin: 5px;
-                padding: 10px;
-                box-shadow: 0px 0px 5px 5px hsl(207, 26%, 13%);
-                cursor: pointer; 
-            }
+        }       
+    }
+}
+.main-light{
+    @include searchInputAndSelect(false);
+    background-color: $Light-Mode-Background;
+    &__back{
+        margin: 8rem; 
+        width: 13.6rem;
+        &__button{
+            @include backButton(false)
         }
     }
-    
-    
+    &__singleInfo{
+        display: flex; 
+        min-height: 100vh;
+        
+        &__img{
+            margin: 0 0 0 8rem;
+            width: 56rem;
+            height: 40rem;
+
+            img{
+                width: 56rem;
+                height: 40rem;
+            }
+        }
+        &__description{
+            margin: 5rem 8rem 0 14.6rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        &__title{
+            font-weight: 800;
+            font-size: 2.4rem;
+            margin: 0 0 4rem 0;
+        }
+        &__borders{
+            @include borderCountries ( false )
+        }
+
+        &__Info{
+            display: flex;
+            flex-direction: row;
+            .Column2{
+                margin-left: 11rem;
+            }
+            &__item{
+                font-size: 1.4rem;
+                line-height: 1.6rem;
+                margin: 0 0 1.6rem 0; 
+                span{
+                    font-weight: 600;
+                }
+            }
+        }       
+    }   
 }
+
